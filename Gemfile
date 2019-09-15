@@ -37,9 +37,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'activeadmin'
-gem "devise", ">= 4.7.1"
+gem 'bootstrap', '~> 4.2.1'
 gem 'cancancan'
+gem "devise", ">= 4.7.1"
 gem 'draper'
+gem 'jquery-rails'
 gem 'pundit'
 
 group :development, :test do

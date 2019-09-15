@@ -1,1 +1,5 @@
-Foo!
+<div class='contestants'>
+    <% @contestants.each do |contestant| %>
+        <%= render partial: 'contestants/card', locals: {contestant: contestant} %>
+    <% end %>
+</div>
