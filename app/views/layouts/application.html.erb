@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='oijofie'>
+  <body class='<%= "oijofie #{controller.controller_name} #{controller.action_name}" %> container'>
     <%= render partial: 'layouts/navigation' %>
     <%= yield %>
   </body>

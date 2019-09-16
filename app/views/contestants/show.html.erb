@@ -1,0 +1,12 @@
+<div class='container'>
+    <div class='contestant'>
+        <div class='row'>
+            <div class='col' style='max-width:175px'>
+                <div class='mb-4'><%= render partial: 'nameplate', locals: {contestant: @contestant} %></div>
+            </div>
+            <div class='col'>
+                <div class='intro-video'><%= youtube_video @contestant.self_introduction_video_url %></div>
+            </div>
+        </div>
+    </div>
+</div>

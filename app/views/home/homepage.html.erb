@@ -1,5 +1,5 @@
 <div class='contestants'>
     <% @contestants.each do |contestant| %>
-        <%= render partial: 'contestants/card', locals: {contestant: contestant} %>
+        <%= render partial: 'contestants/nameplate', locals: {contestant: contestant} %>
     <% end %>
 </div>
