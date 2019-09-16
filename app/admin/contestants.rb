@@ -8,8 +8,8 @@ ActiveAdmin.register Contestant do
       column :name_english
       column :headshot_url
       column :bodyshot_url
-      column :profile_url
       column :self_introduction_video_url
+      column :profile_url
       column :created_at
       actions
     end
@@ -20,11 +20,11 @@ ActiveAdmin.register Contestant do
   
     form do |f|
       f.inputs do
+        f.input :profile_url
         f.input :name_native
         f.input :name_english
         f.input :headshot_url
         f.input :bodyshot_url
-        f.input :profile_url
         f.input :self_introduction_video_url
       end
       f.actions
