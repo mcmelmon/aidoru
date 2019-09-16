@@ -1,0 +1,22 @@
+<div class='mb-4' id='group-<%= group.id %>'>
+  <div><span class='timestamp'><%= group.updated_at.to_formatted_s(:short) %></span></div>
+  <div><p class='the-group'><%= link_to group.name, group_path(group) %></p></div>
+  <div></div>
+
+    <div class='row'>
+        <div class='col'>
+            <div class='actions'>
+                <span>
+                    <%= link_to edit_group_path(group) do %>
+                        edit <i class='fas fa-edit'></i>
+                    <% end %>
+                </span>
+                <span>
+                    <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        delete <i class='fas fa-trash-alt'></i>
+                    <% end %>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
