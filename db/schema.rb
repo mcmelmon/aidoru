@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_184415) do
+ActiveRecord::Schema.define(version: 2019_09_16_024927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,16 @@ ActiveRecord::Schema.define(version: 2019_09_15_184415) do
     t.string "profile_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "self_introduction_video_url"
+  end
+
+  create_table "performances", force: :cascade do |t|
+    t.bigint "contestant_id"
+    t.string "youtube_video_id"
+    t.string "name_native"
+    t.string "name_english"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contestant_id"], name: "index_performances_on_contestant_id"
   end
 
   create_table "spatial_ref_sys", primary_key: "srid", id: :integer, default: nil, force: :cascade do |t|
@@ -72,4 +81,5 @@ ActiveRecord::Schema.define(version: 2019_09_15_184415) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "performances", "contestants"
 end
