@@ -5,7 +5,13 @@
                 <div class='mb-4'><%= render partial: 'nameplate', locals: {contestant: @contestant} %></div>
             </div>
             <div class='col'>
-                <div class='intro-video'><%= youtube_video @contestant.self_introduction_video_url %></div>
+                <% @contestant.performances.each do |performance| %>
+                    <div class='performance mb-4'>
+                        <h3 class='mb-1'><%= performance.name_native %></h2>
+                        <h3 class='mb-1'><%= performance.name_english %></h2>
+                        <div class='video'><%= youtube_video performance.youtube_video_id %></div>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>

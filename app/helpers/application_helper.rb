@@ -1,7 +1,6 @@
 module ApplicationHelper
-    def youtube_video(url)
-        id = url.gsub(/https:\/\/youtu.be\//,'')
-        embed = "https://www.youtube.com/embed/#{id}"
+    def youtube_video(video_id)
+        embed = "https://www.youtube.com/embed/#{video_id}"
         render :partial => 'layouts/video', :locals => { :url => embed }
     end
 end
