@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aidoru</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+    <title>Oijofie</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <%= render partial: 'layouts/google' if Rails.env.production? %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
   </head>
 
   <body class='<%= "oijofie #{controller.controller_name} #{controller.action_name}" %> container'>
