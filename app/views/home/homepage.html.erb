@@ -1,5 +1,33 @@
-<div class='contestants'>
-    <% @contestants.each do |contestant| %>
-        <%= render partial: 'contestants/nameplate', locals: {contestant: contestant} %>
+<div class='homepage'>
+    <% if user_signed_in? %>
+        <div class='jumbotron'>
+        <% if current_user.groups.blank? %>
+            <h1 class="display-4">Welcome, Director!</h1>
+            <hr class="my-4">
+            <p>Form your group.</p>
+            <p class='lead'>
+                <%= link_to 'Create Group', new_group_path, class: 'btn btn-primary btn-lg' %>
+            </p>
+        <% else %>
+            <p class='lead'>
+                <%= render partial: 'groups/group', locals: { group: current_user.current_group } %>
+            </p>
+        <% end %>
+        </div>
+    <% else %>
+        <div class='jumbotron'>
+            <h1 class="display-4">Welcome, Director!</h1>
+            <hr class="my-4">
+            <p>Register and start making your fantasy idol groups!</p>
+            <p class="lead mb-4 mt-4">
+                <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+                <%= link_to 'Sign In', user_session_path, class: 'btn btn-secondary btn-lg' %>
+            </p>
+        </div>
     <% end %>
+    <div class='contestants'>
+        <% @contestants.each do |contestant| %>
+            <%= render partial: 'contestants/contestant_nameplate_full', locals: {contestant: contestant} %>
+        <% end %>
+    </div>
 </div>

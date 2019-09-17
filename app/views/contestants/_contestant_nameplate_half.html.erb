@@ -1,0 +1,17 @@
+<%= link_to contestant_path(contestant) do %>
+    <div class='contestant_nameplate_half'>
+        <div class='headshot'><%= image_tag contestant.headshot_url %></div>
+        <div class='name'>
+            <h2 class='native'><%= contestant.name_native %></h1>
+            <h2 class='english'><%= contestant.name_english %></h2>
+        </div>
+        <div class='actions'>
+            <% if current_user.current_group.present? && current_user.current_group.center_id == contestant.id %>
+                <%= link_to 'I Am The Center', '#', class: 'btn btn-primary' %>
+            <% else %>
+                <%= link_to 'Make Center', make_center_contestant_path(contestant), class: 'btn btn-primary' %>
+            <% end %>
+            <%= link_to 'Remove', remove_from_group_contestant_path(contestant), class: 'btn btn-secondary' %>
+        </div>
+    </div>
+<% end %>

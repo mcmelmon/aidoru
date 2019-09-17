@@ -2,7 +2,7 @@
     <div class='contestant'>
         <div class='row'>
             <div class='col' style='max-width:175px'>
-                <div class='mb-4'><%= render partial: 'nameplate', locals: {contestant: @contestant} %></div>
+                <div class='mb-4'><%= render partial: 'contestant_nameplate_full', locals: {contestant: @contestant} %></div>
             </div>
             <div class='col'>
                 <% @contestant.performances.each do |performance| %>
