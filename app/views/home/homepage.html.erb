@@ -10,7 +10,7 @@
             </p>
         <% else %>
             <p class='lead'>
-                <%= render partial: 'groups/group', locals: { group: current_user.groups.first } %>
+                <%= render partial: 'groups/group', locals: { group: current_user.current_group } %>
             </p>
         <% end %>
         </div>
@@ -27,7 +27,7 @@
     <% end %>
     <div class='contestants'>
         <% @contestants.each do |contestant| %>
-            <%= render partial: 'contestants/nameplate', locals: {contestant: contestant} %>
+            <%= render partial: 'contestants/contestant_nameplate_full', locals: {contestant: contestant} %>
         <% end %>
     </div>
 </div>

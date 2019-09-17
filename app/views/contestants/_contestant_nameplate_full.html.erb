@@ -1,5 +1,5 @@
 <%= link_to contestant_path(contestant) do %>
-    <div class='nameplate'>
+    <div class='contestant_nameplate_full'>
         <div class='headshot'><%= image_tag contestant.headshot_url %></div>
         <div class='name'>
             <h2 class='native'><%= contestant.name_native %></h1>
@@ -7,8 +7,7 @@
         </div>
         <div class='bodyshot'><%= image_tag contestant.bodyshot_url %></div>
         <div class='actions'>
-            <%= link_to 'Add', '#', class: 'btn btn-primary' %>
-            <%= link_to 'Make Center', '#', class: 'btn btn-secondary' %>   
+            <%= link_to 'Add', add_to_group_contestant_path(contestant, group_id: current_user.current_group), class: 'btn btn-primary' %>
         </div>
     </div>
 <% end %>

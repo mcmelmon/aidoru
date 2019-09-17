@@ -1,15 +1,16 @@
 class GroupsController < ApplicationController
-    before_action :authenticate_user!, only: [:destroy, :edit, :update]
-    before_action :correct_user, only: [:destroy, :edit, :update]
+    before_action :authenticate_user!, only: [:destroy, :edit, :make_current_group, :update]
+    before_action :correct_user, only: [:destroy, :edit, :make_current_group, :update]
 
     def create
         @group = current_user.groups.build(group_params)
         if @group.save
-          flash[:notice] = 'Your group was created.'
-          redirect_to root_path
+            current_user.update_attribute(:current_group_id, @group.id)
+            flash[:notice] = 'Your group was created.'
+            redirect_to root_path
         else
-          flash[:error] = 'There was a problem'
-          redirect_to new_group_path
+            flash[:error] = 'There was a problem'
+            redirect_to new_group_path
         end
     end
 
@@ -24,6 +25,11 @@ class GroupsController < ApplicationController
 
     def index
         @groups = current_user.groups
+    end
+
+    def make_current_group
+        current_user.update_attribute(:current_group_id, @group.id)
+        redirect_to root_path
     end
 
     def new

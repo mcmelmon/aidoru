@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :groups, inverse_of: :user
+
+  def current_group
+    groups.find_by(id: current_group_id)
+  end
 end

@@ -1,43 +1,78 @@
 .contestants
-    .nameplate
-        border: 1px solid #cccccc
-
-        h1, h2
-            text-align: center
-
-        max-width: 175px
-
-        .actions
-            .btn
-                border: none
-                width: 100%
-
-        .bodyshot
-            img
-                max-width: 100%
-
-        .headshot
-            display: flex
-            padding: 15px
-
-            img
-                border-radius: 50%
-                max-width: 100%
-
-        .name
-            height: 125px
-
-            .english
-                color: #b5b5b5
-                font-size: 16px
-
     &.show
         .performance
             h3
                 font-size: 18px
 
-.home
+.contestant_nameplate_full
+    border: 1px solid #cccccc
+
+    h1, h2
+        text-align: center
+
+    max-width: 175px
+
+    .actions
+        .btn
+            border: none
+            width: 100%
+
+    .bodyshot
+        img
+            max-width: 100%
+
+    .headshot
+        display: flex
+        padding: 15px
+
+        img
+            border-radius: 50%
+            max-width: 100%
+
+    .name
+        height: 125px
+
+        .english
+            color: #b5b5b5
+            font-size: 16px
+
+.contestant_nameplate_half
+    border: 1px solid #cccccc
+
+    h1, h2
+        text-align: center
+
+    max-width: 100px
+
+    .actions
+        .btn
+            border: none
+            width: 100%
+
+    .bodyshot
+        img
+            max-width: 100%
+
+    .headshot
+        display: flex
+        padding: 15px
+
+        img
+            border-radius: 50%
+            max-width: 100%
+
+    .name
+        height: 125px
+
+        .english
+            color: #b5b5b5
+            font-size: 16px
+
+.group
     .contestants
-        .nameplate
-            float: left
-            margin: 5px
+        display: flex
+
+.home
+    .contestant_nameplate_full
+        float: left
+        margin: 5px

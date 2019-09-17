@@ -1,22 +1,37 @@
-<div class='mb-4' id='group-<%= group.id %>'>
-  <div><span class='timestamp'><%= group.updated_at.to_formatted_s(:short) %></span></div>
-  <div><p class='the-group'><%= link_to group.name, group_path(group) %></p></div>
-  <div></div>
-
+<div class='group mb-4' id='group-<%= group.id %>'>
     <div class='row'>
         <div class='col'>
             <div class='actions'>
+                <% if group.id != current_user.current_group_id %>
+                    <span>
+                        <%= link_to make_current_group_path(group) do %>
+                            make current <i class=''></i>
+                        <% end %>
+                    </span> |
+                <% end %>
                 <span>
                     <%= link_to edit_group_path(group) do %>
                         edit <i class='fas fa-edit'></i>
                     <% end %>
-                </span>
+                </span> |
                 <span>
-                    <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        delete <i class='fas fa-trash-alt'></i>
+                    <%= link_to group, method: :delete, data: { confirm: 'Are you sure you want to disband this group?' } do %>
+                        disband <i class='fas fa-trash-alt'></i>
                     <% end %>
                 </span>
             </div>
         </div>
     </div>
+    <div><p class='the-group'><%= link_to group.name, group_path(group) %></p></div>
+    <% if group.contestants.blank? %>
+        <div>
+            <p><%= link_to 'Add', root_path %> members to this group!</p>
+        </div>
+    <% else %>
+        <div class='contestants'>
+            <% group.contestants.each do |contestant| %>
+                <%= render partial: 'contestants/contestant_nameplate_half', locals: { contestant: contestant } %>
+            <% end %>
+        </div>
+    <% end %>
 </div>
