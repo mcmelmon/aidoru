@@ -7,7 +7,9 @@
         </div>
         <div class='bodyshot'><%= image_tag contestant.bodyshot_url %></div>
         <div class='actions'>
-            <%= link_to 'Add', add_to_group_contestant_path(contestant, group_id: current_user.current_group), class: 'btn btn-primary' %>
+            <% if current_user.present? && current_user.current_group.present? %>
+                <%= link_to 'Add', add_to_group_contestant_path(contestant, group_id: current_user.current_group), class: 'btn btn-primary' %>
+            <% end %>
         </div>
     </div>
 <% end %>

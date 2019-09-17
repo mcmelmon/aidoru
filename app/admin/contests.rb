@@ -1,5 +1,5 @@
 ActiveAdmin.register Contest do
-    permit_params :end_date, :name_english, :name_native, :start_date, :url
+    permit_params :end_date, :group_size, :name_english, :name_native, :start_date, :url
   
     index do
       selectable_column
@@ -27,6 +27,7 @@ ActiveAdmin.register Contest do
         f.input :url
         f.input :start_date
         f.input :end_date
+        f.input :group_size
       end
       f.actions
     end
