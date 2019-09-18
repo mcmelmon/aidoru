@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
 
     def destroy
         available_groups = current_user.groups.where.not(id: @group.id)
-        current_user.update_attribute(:current_group_id, available_groups.first.id) if @group == current_user.current_group
+        current_user.update_attribute(:current_group_id, available_groups.first&.id) if @group == current_user.current_group
         @group.destroy
         flash[:notice] = 'Group deleted.'
         redirect_to root_path
