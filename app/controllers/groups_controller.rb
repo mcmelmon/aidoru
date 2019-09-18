@@ -1,6 +1,18 @@
 class GroupsController < ApplicationController
-    before_action :authenticate_user!, only: [:destroy, :edit, :make_current_group, :update]
-    before_action :correct_user, only: [:destroy, :edit, :make_current_group, :update]
+    before_action :authenticate_user!, only: [:add_random_members, :destroy, :edit, :make_current_group, :update]
+    before_action :correct_user, only: [:add_random_members, :destroy, :edit, :make_current_group, :update]
+
+    def add_random_members
+        open_positions = @group.contest.group_size - @group.contestants.count
+        members = Contestant.where.not(id: @group.contestants.map(&:id))
+            .to_a
+            .shuffle
+            .first(open_positions)
+        members.each do |member|
+            @group.group_members.create!(contestant: member)
+        end
+        redirect_to group_path(@group)
+    end
 
     def create
         @group = current_user.groups.build(group_params)
@@ -15,6 +27,8 @@ class GroupsController < ApplicationController
     end
 
     def destroy
+        available_groups = current_user.groups.where.not(id: @group.id)
+        current_user.update_attribute(:current_group_id, available_groups.first.id) if @group == current_user.current_group
         @group.destroy
         flash[:notice] = 'Group deleted.'
         redirect_to root_path

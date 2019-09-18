@@ -13,7 +13,7 @@ class Group < ApplicationRecord
     end
 
     def is_active_for(user)
-        id == user.current_group.id
+        id == user.current_group&.id
     end
 
     def ordered_contestants

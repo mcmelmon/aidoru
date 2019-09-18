@@ -1,7 +1,7 @@
 <div class='homepage'>
     <% if user_signed_in? %>
         <div class='jumbotron'>
-        <% if current_user.groups.blank? %>
+        <% if current_user.current_group.blank? %>
             <h1 class="display-4">Welcome, Producer!</h1>
             <p class='lead'>
                 <%= link_to 'Start New Group', new_group_path, class: 'btn btn-primary btn-lg' %>
