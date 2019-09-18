@@ -1,7 +1,7 @@
 <div class='group mb-4'>
-    <div><h3 class='the-group'><%= link_to group.name, group_path(group) %></h3></div>
+    <div><h2 class='the-group'><%= link_to group.name, group_path(group) %></h2></div>
 
-    <div class='contestants'>
+    <div class='contestants row m-0'>
         <% group.ordered_contestants.each do |contestant| %>
             <%= render partial: 'contestants/contestant_nameplate_half', locals: { contestant: contestant } %>
         <% end %>
