@@ -8,12 +8,13 @@ class ContestantsController < ApplicationController
 
     def make_center
         @group.update_attribute(:center_id, @contestant.id)
-        redirect_to root_path
+        redirect_to params[:back] == 'index' ? root_path : group_path(@group)
     end
 
     def remove_from_group
+        @group.update_attribute(:center_id, nil) if @group.center == @contestant
         @group.group_members.find_by(contestant: @contestant).destroy
-        redirect_to root_path
+        redirect_to params[:back] == 'index' ? root_path : group_path(@group)
     end
 
     def show
