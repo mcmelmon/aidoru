@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     member do
+      get 'add_random_members', to: 'groups#add_random_members'
       get 'make_current', to: 'groups#make_current_group'
     end
   end

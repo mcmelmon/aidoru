@@ -1,7 +1,10 @@
 <div class='container'>
     <h2>My Groups</h2>
-    <div class='topic posts'><%= render @groups %></div>
-    <div>
-        <%= link_to 'New Group', new_group_path, class: 'btn btn-primary' %>
+    <% current_user.groups.each do |group| %>
+       <%= render partial: 'group_summary', locals: { group: group } %>
+       <hr>
+    <% end %>
+    <div class='actions'>
+        <%= link_to 'Start New Group', new_group_path, class: 'btn btn-primary' %>
     </div>
 </div>
