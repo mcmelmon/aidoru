@@ -2,18 +2,17 @@ class ContestantsController < ApplicationController
     before_action :correct_group, only: [:add_to_group, :make_center, :remove_from_group]
 
     def add_to_group
-        @group.group_members.create!(contestant: @contestant)
+        @contestant.add_to_group(@group)
         redirect_to root_path
     end
 
     def make_center
-        @group.update_attribute(:center_id, @contestant.id)
+        @contestant.make_center(@group)
         redirect_to params[:back] == 'index' ? root_path : group_path(@group)
     end
 
     def remove_from_group
-        @group.update_attribute(:center_id, nil) if @group.center == @contestant
-        @group.group_members.find_by(contestant: @contestant).destroy
+        @contestant.remove_from_group(@group)
         redirect_to params[:back] == 'index' ? root_path : group_path(@group)
     end
 

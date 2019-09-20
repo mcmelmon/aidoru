@@ -12,6 +12,11 @@ class Group < ApplicationRecord
         Contestant.find_by(id: center_id)
     end
 
+    def destroy
+        contestants.each { |contestant| contestant.remove_from_group(self) }
+        super()
+    end
+
     def is_active_for(user)
         id == user.current_group&.id
     end

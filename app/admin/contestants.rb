@@ -13,6 +13,12 @@ ActiveAdmin.register Contestant do
       column :headshot_url
       column :bodyshot_url
       column :profile_url
+      column "Adds" do |contestant|
+        contestant.contestant_adds&.count
+      end
+      column "Removes" do |contestant|
+        contestant.contestant_removes&.count
+      end
       column :created_at
       actions
     end
