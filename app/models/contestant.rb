@@ -1,17 +1,19 @@
 class Contestant < ApplicationRecord
     belongs_to :contest, optional: true
-    has_many :contestant_adds, inverse_of: :contestant, dependent: :destroy
-    has_many :contestant_removes, inverse_of: :contestant, dependent: :destroy
+    has_many :contest_rankings, inverse_of: :contestant, dependent: :destroy
+    has_many :group_adds, inverse_of: :contestant, dependent: :destroy
     has_many :group_members, inverse_of: :contestant, dependent: :destroy
+    has_many :group_removes, inverse_of: :contestant, dependent: :destroy
     has_many :performances, inverse_of: :contestant, dependent: :destroy
 
     has_many :groups, through: :group_members
 
     accepts_nested_attributes_for :performances, allow_destroy: true
+    accepts_nested_attributes_for :contest_rankings, allow_destroy: true
 
     def add_to_group(group)
         group.group_members.create!(contestant: self)
-        contestant_adds.create!(group_id: group.id)
+        group_adds.create!(group_id: group.id)
     end
 
     def is_center_for(group)
@@ -25,6 +27,6 @@ class Contestant < ApplicationRecord
     def remove_from_group(group)
         group.update_attribute(:center_id, nil) if group.center == self
         group.group_members.find_by(contestant: self).destroy
-        contestant_removes.create!(group_id: group.id)
+        group_removes.create!(group_id: group.id)
     end
 end

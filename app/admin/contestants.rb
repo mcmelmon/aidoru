@@ -1,6 +1,8 @@
 ActiveAdmin.register Contestant do
     permit_params :bodyshot_url, :contest_id, :headshot_url, :name_native, :name_english, :profile_url,
-                  performances_attributes: [ :id, :name_english, :name_native, :youtube_video_id, :_destroy ]
+                  performances_attributes: [ :id, :name_english, :name_native, :youtube_video_id, :_destroy ],
+                  contest_rankings_attributes: [ :id, :period, :rank, :_destroy ]
+
   
     index do
       selectable_column
@@ -14,10 +16,13 @@ ActiveAdmin.register Contestant do
       column :bodyshot_url
       column :profile_url
       column "Adds" do |contestant|
-        contestant.contestant_adds&.count
+        contestant.group_adds&.count
       end
       column "Removes" do |contestant|
-        contestant.contestant_removes&.count
+        contestant.group_removes&.count
+      end
+      column "Current Ranking" do |contestant|
+        contestant.contest_rankings.last&.rank
       end
       column :created_at
       actions
@@ -42,6 +47,11 @@ ActiveAdmin.register Contestant do
             link_to performance.name_english, [:admin, performance]
           end
         end
+        table_for contestant.contest_rankings.order('created_at') do
+          column "Rankings" do |ranking|
+            ranking.rank
+          end
+        end
       end
     end
   
@@ -57,6 +67,10 @@ ActiveAdmin.register Contestant do
           c.input :youtube_video_id
           c.input :name_native
           c.input :name_english
+        end
+        f.has_many :contest_rankings, allow_destroy: true do |c|
+          c.input :period
+          c.input :rank
         end
       end
       f.actions
