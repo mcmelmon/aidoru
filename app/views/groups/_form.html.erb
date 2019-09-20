@@ -5,8 +5,8 @@
     </div>
 
     <div class="field mt-4">
-      <%= f.label :description %><br />
-      <%= f.text_area :description, rows: '6' %>
+      <%= f.label 'Describe your reasons for choosing the group members' %><br />
+      <%= f.text_area :description, rows: '11' %>
     </div>
   
     <%= hidden_field_tag(:user_id, @group.user_id) %>

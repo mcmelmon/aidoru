@@ -1,12 +1,15 @@
 <%= link_to contestant_path(contestant) do %>
-    <div class='contestant_nameplate_half'>
+    <div class='contestant-nameplate-half'>
+        <% if contestant.is_center_for(current_user.current_group) %>
+            <div class='center-label mt-1'>Center</div>
+        <% end %>
         <div class='headshot'><%= image_tag contestant.headshot_url %></div>
         <div class='name'>
             <h2 class='native'><%= contestant.name_native %></h1>
             <h2 class='english'><%= contestant.name_english %></h2>
         </div>
         <div class='actions'>
-            <% if current_user.current_group.present? && current_user.current_group.center_id == contestant.id %>
+            <% if contestant.is_center_for(current_user.current_group) %>
                 <%= link_to 'Center', '#', class: 'btn btn-primary' %>
             <% else %>
                 <%= link_to 'Make Center', make_center_contestant_path(contestant, back: controller.action_name), class: 'btn btn-primary' %>

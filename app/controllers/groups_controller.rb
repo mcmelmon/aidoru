@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
             .shuffle
             .first(open_positions)
         members.each do |member|
-            @group.group_members.create!(contestant: member)
+            member.add_to_group(@group)
         end
         redirect_to group_path(@group)
     end
