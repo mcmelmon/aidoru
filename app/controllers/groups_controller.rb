@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
         members.each do |member|
             member.add_to_group(@group)
         end
-        redirect_to group_path(@group)
+        redirect_to edit_group_path(@group)
     end
 
     def create

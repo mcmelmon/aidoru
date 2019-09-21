@@ -5,14 +5,21 @@
     </div>
 
     <div class="field mt-4">
-      <%= f.label 'Describe your reasons for choosing the group members' %><br />
-      <%= f.text_area :description, rows: '11' %>
+      <%= f.label 'Share your plan for the group' %><br />
+      <%= f.text_area :description, rows: '11', placeholder: "In Produce101 Season Two (Korea), 'CEO Hwang Minhyun' revealed the plan behind his picks for taking on Super Junior's smash hit Sorry, Sorry." %>
     </div>
   
     <%= hidden_field_tag(:user_id, @group.user_id) %>
     <%= hidden_field_tag(:contest_id, @group.contest_id) %>
-  
-    <div class="actions">
-      <%= f.submit (@group.persisted? ? 'Update' : 'Create'), class: 'btn btn-primary btn-lg' %>
-    </div>
+
+    <% if @group.persisted? %>
+      <%= render partial: 'groups/group', locals: { group: @group } %>
+
+      <% if @group.contestants.count < @group.contest.group_size %>
+        <p class='mb-1 mt-4'><%= link_to 'Pick', root_path %> members to add to this group!</p>
+        <p><%= link_to 'Randomly', add_random_members_group_path(@group) %> select members for this group!</p>
+      <% end %>
+    <% end %>
+
+    <%= f.submit (@group.persisted? ? 'Update' : 'Create'), class: 'btn btn-primary btn-lg mb-4 mt-4' %>
 <% end %>
