@@ -1,7 +1,7 @@
 <div class='container'>
   <h1><%= @group.name %></h1>
   <div class='group'><%= render partial: 'group', locals: { group: @group } %></div>
-  <div><p><%= @group.description %></p></div>
+  <div><p><%= simple_format(@group.description) %></p></div>
   <% if @group.persisted? && @group.contestants.count < @group.contest.group_size %>
     <p class='mb-1 mt-4'><%= link_to 'Pick', root_path %> members to add to this group!</p>
     <p><%= link_to 'Randomly', add_random_members_group_path(@group) %> select members for this group!</p>
