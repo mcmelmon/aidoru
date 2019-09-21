@@ -8,6 +8,7 @@
             </p>
         <% else %>
             <div class='lead'>
+                <div><h2 class='the-group'><%= link_to current_user.current_group.name, group_path(current_user.current_group) %></h2></div>
                 <%= render partial: 'groups/group', locals: { group: current_user.current_group } %>
             </div>
         <% end %>

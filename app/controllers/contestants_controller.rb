@@ -8,12 +8,12 @@ class ContestantsController < ApplicationController
 
     def make_center
         @contestant.make_center(@group)
-        redirect_to params[:back] == 'index' ? root_path : group_path(@group)
+        redirect_to edit_group_path(@group)
     end
 
     def remove_from_group
         @contestant.remove_from_group(@group)
-        redirect_to params[:back] == 'index' ? root_path : group_path(@group)
+        redirect_to edit_group_path(@group)
     end
 
     def show
@@ -27,7 +27,7 @@ class ContestantsController < ApplicationController
     private
 
         def correct_group
-            @group = current_user.current_group
+            @group = current_user.groups.find_by(id: params[:group_id])
             redirect_to root_path if @group.blank?
             @contestant = Contestant.find_by(id: params[:id])
         end

@@ -1,37 +1,9 @@
 <div class='group mb-4'>
-    <div><h2 class='the-group'><%= link_to group.name, group_path(group) %></h2></div>
-
-    <div class='contestants row m-0'>
-        <% group.ordered_contestants.each do |contestant| %>
-            <%= render partial: 'contestants/contestant_nameplate_half', locals: { contestant: contestant } %>
+    <div class='row contestants m-0'>
+        <% if group.present? %>
+            <% group.ordered_contestants.each do |contestant| %>
+                <%= render partial: 'contestants/contestant_nameplate_half', locals: { contestant: contestant, group: group } %>
+            <% end %>
         <% end %>
-    </div>
-    <% if group.contestants.count < group.contest.group_size %>
-        <p class='mb-1 mt-4'><%= link_to 'Pick', root_path %> members to add to this group!</p>
-        <p><%= link_to 'Randomly', add_random_members_group_path(group) %> select members for this group!</p>
-    <% end %>
-
-    <div class='manage-group row mt-3'>
-        <div class='col'>
-            <div class='actions'>
-                <% if group.id != current_user.current_group_id %>
-                    <span>
-                        <%= link_to make_current_group_path(group) do %>
-                            make current <i class=''></i>
-                        <% end %>
-                    </span> |
-                <% end %>
-                <span>
-                    <%= link_to edit_group_path(group) do %>
-                        edit <i class='fas fa-edit'></i>
-                    <% end %>
-                </span> |
-                <span>
-                    <%= link_to group, method: :delete, data: { confirm: 'Are you sure you want to disband this group?' } do %>
-                        disband <i class='fas fa-trash-alt'></i>
-                    <% end %>
-                </span>
-            </div>
-        </div>
     </div>
 </div>
