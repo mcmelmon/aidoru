@@ -87,6 +87,43 @@
     font-size: 18px
     margin: 0
 
+.apple_pagination
+  cursor: default
+  padding: 10px
+  text-align: center
+  width: 100%
+
+  a, span
+    color: black
+    padding: 5px 5px
+    text-decoration: none
+
+    &:hover, &:focus
+      text-decoration: underline
+
+  .disabled
+    a
+      color: #aaaaaa
+
+      &:hover, &:focus
+        text-decoration: none
+
+  .active, .current
+    -moz-border-radius: 0
+    -webkit-border-radius: 0
+    background-color: darken(#f1f1f1, 20)
+    border-radius: 0
+    display: inline-block
+    font-style: normal
+    font-weight: bold
+    height: 15px
+    line-height: 1.5
+    text-shadow: rgba(white, .8) 1px 1px 1px
+    width: 15px
+
+  .pagination
+    margin: auto
+
 .btn
   border-radius: 0
   background-image: none
