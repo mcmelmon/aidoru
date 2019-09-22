@@ -13,12 +13,12 @@ module ApplicationHelper
 
     def open_graph_image
         if @group.present?
-            @group.center.bodyshot_url if @group.center.present?
+            @group.center.headshot_url if @group.center.present?
         elsif @contestant.present?
-            @contestant.bodyshot_url
+            @contestant.headshot_url
         elsif controller.controller_name == 'home'
             group = current_user&.current_group
-            group.center.bodyshot_url if (group.present? && group.center.present?)
+            group.center.headshot_url if (group.present? && group.center.present?)
         end
     end
 
