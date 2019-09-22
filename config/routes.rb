@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    get 'groups', to: 'users#groups'
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

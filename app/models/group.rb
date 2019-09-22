@@ -8,6 +8,8 @@ class Group < ApplicationRecord
     validates_presence_of :contest_id
     validates_presence_of :user_id
 
+    self.per_page = 10
+
     def center
         Contestant.find_by(id: center_id)
     end

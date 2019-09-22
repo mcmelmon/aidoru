@@ -1,15 +1,33 @@
+.group
+    .actions
+        display: none
+
 .groups
-    .group
-        .actions
+    .member
+        float: left
+        margin: 0 15px 15px 0
+        width: 250px
+
+        .english
+            font-size: 16px
+
+        .headshot
+            float: left
+            margin-right: 5px
+            width: 50px
+
+            img
+                border-radius: 50%
+                max-width: 100%
+
+        .native
             font-size: 18px
+            font-weight: bold
 
     &.edit
-        .contestant-nameplate-half
-            .actions
-                display: inline
-
-            .center-label
-                display: none
+        .actions
+            display: inline
+            font-size: 16px
 
     &.index
         .actions

@@ -88,41 +88,46 @@
     margin: 0
 
 .apple_pagination
-  cursor: default
-  padding: 10px
-  text-align: center
-  width: 100%
+    align-items: center
+    cursor: default
+    display: flex
+    font-size: 16px
+    justify-content: center
 
-  a, span
-    color: black
-    padding: 5px 5px
-    text-decoration: none
-
-    &:hover, &:focus
-      text-decoration: underline
-
-  .disabled
-    a
-      color: #aaaaaa
+    a, span
+      background-color: white
+      background: none
+      box-shadow: none
+      border: none
+      color: black
+      padding: 10px
+      text-decoration: none
 
       &:hover, &:focus
-        text-decoration: none
+        text-decoration: underline
 
-  .active, .current
-    -moz-border-radius: 0
-    -webkit-border-radius: 0
-    background-color: darken(#f1f1f1, 20)
-    border-radius: 0
-    display: inline-block
-    font-style: normal
-    font-weight: bold
-    height: 15px
-    line-height: 1.5
-    text-shadow: rgba(white, .8) 1px 1px 1px
-    width: 15px
+      &.disabled
+        color: #aaa
 
-  .pagination
-    margin: auto
+        &:hover, &:focus
+          text-decoration: none
+
+    .current, .next
+      align-items: center
+      background-color: darken(#f1f1f1, 20)
+      border-radius: 50%
+      display: flex
+      font-style: normal
+      font-weight: bold
+      height: 25px
+      justify-content: center
+      text-shadow: none
+      width: 25px
+
+    .pagination
+      align-items: center
+      margin: 0
+      padding: 0
 
 .btn
   border-radius: 0
