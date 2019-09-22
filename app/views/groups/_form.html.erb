@@ -5,8 +5,8 @@
     </div>
 
     <div class="field mt-4">
-      <%= f.label 'Share your plan for the group' %><br />
-      <%= f.text_area :description, rows: '11', placeholder: "In Produce101 Season Two (Korea), 'CEO Hwang Minhyun' revealed the plan behind his picks for taking on Super Junior's smash hit Sorry, Sorry." %>
+      <%= f.label 'Description' %><br />
+      <%= f.text_area :description, rows: '11', placeholder: "Do you have a theme for this group?  Share the reasons behind your picks." %>
     </div>
   
     <%= hidden_field_tag(:user_id, @group.user_id) %>
