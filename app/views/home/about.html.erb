@@ -1,0 +1,33 @@
+<%= content_for(:title) { 'About' } %>
+<%= content_for(:page_description) { 'Oijofie allows users to pick contestants for their own fantasy idol groups.  When the real idols are ranked, the fantasy groups will be scored and ranked as well. ' } %>
+
+<h3>About</h3>
+
+<div class='mb-4'>
+    <p class='mb-3'>
+        Like a fantasy sports site for idol shows, Oijofie allows users to add contestants to their own fantasy groups.  
+        When the contestants receive rankings in real life, the fantasy groups get scored based on each included member.  
+        The group score accumulates for every round.  
+        So picking the right members for a group sooner (and leaving them alone) will score higher than picking them later.
+    </p>
+    <p class='mb-3'>
+        Of course, people are free to pick group members to match themes of their own imagining.  
+        Share the reasons for your choices when you create your fantasy groups!
+    </p>
+</div>
+
+<h3 class='mb-2 mt-4'>Contact Us</h3>
+
+<%= form_for(@message) do |f| %>
+    <div class="field">
+      <%= f.label 'Your email address' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field mt-4">
+      <%= f.label 'Message' %><br />
+      <%= f.text_area :message, rows: '11', placeholder: "" %>
+    </div>
+
+    <%= f.submit 'Send Message', class: 'btn btn-primary btn-lg mb-4 mt-4' %>
+<% end %>

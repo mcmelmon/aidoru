@@ -65,7 +65,6 @@ class GroupsController < ApplicationController
     end
 
     private
-
         def group_params
             params.require(:group).permit(:center_id, :contest_id, :description, :name, :user_id).tap do |clean_params|
                 clean_params[:contest_id] = Contest.first.id
@@ -77,5 +76,5 @@ class GroupsController < ApplicationController
         def correct_user
             @group = current_user.groups.find_by(id: params[:id])
             redirect_to root_url if @group.nil?
-         end
+        end
 end
