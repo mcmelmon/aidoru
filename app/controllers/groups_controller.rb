@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
     end
 
     def index
-        @groups = current_user.groups
+        @groups = Group.page(params[:page]).order('updated_at DESC')
     end
 
     def make_current_group

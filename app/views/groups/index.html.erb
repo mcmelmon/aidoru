@@ -1,10 +1,11 @@
 <div class='container'>
-    <h2>My Groups</h2>
-    <% current_user.groups.each do |group| %>
-        <%= render partial: 'group_summary', locals: { group: group } %>
-        <hr>
+    <% @groups.each do |group| %>
+        <% if group.contestants.present? %>
+            <h2><%= link_to group.name, group_path(group) %></h2>
+            <%= render partial: 'groups/group', locals: { group: group } %>
+            <p><%= truncate(group.description, length: 140) %></p>
+            <hr>
+        <% end %>
     <% end %>
-    <div class='actions'>
-        <%= link_to 'Start New Group', new_group_path, class: 'btn btn-primary' %>
-    </div>
+    <div class='apple_pagination mb-4 mt-4'><%= will_paginate @groups %></div>
 </div>

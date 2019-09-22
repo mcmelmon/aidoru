@@ -1,3 +1,6 @@
+<%= content_for(:title) { 'Welcome!' } %>
+<%= content_for(:page_description) { 'Start picking members for your fantasy idol groups.' } %>
+
 <div class='homepage'>
     <% if user_signed_in? %>
         <div class='jumbotron'>
@@ -27,7 +30,7 @@
     <div class='separator'><h1 class='text-uppercase'><%= "#{Contest.first.name_native} Contestants" %></h1></div>
     <div class='contestants'>
         <% @contestants.each do |contestant| %>
-            <%= render partial: 'contestants/contestant_nameplate_full', locals: {contestant: contestant} %>
+            <%= render partial: 'contestants/nameplate_full', locals: {contestant: contestant} %>
         <% end %>
     </div>
 </div>

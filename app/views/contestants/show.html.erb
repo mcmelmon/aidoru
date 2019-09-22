@@ -2,7 +2,7 @@
     <div class='contestant'>
         <div class='row'>
             <div class='col' style='max-width:200px'>
-                <div class='mb-4'><%= render partial: 'contestant_nameplate_full', locals: {contestant: @contestant} %></div>
+                <div class='mb-4'><%= render partial: 'nameplate_full', locals: {contestant: @contestant} %></div>
                 <h4><%= link_to 'Profile', @contestant.profile_url, target: '_blank'%></h4>
             </div>
             <div class='col'>

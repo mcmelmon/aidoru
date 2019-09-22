@@ -87,6 +87,48 @@
     font-size: 18px
     margin: 0
 
+.apple_pagination
+    align-items: center
+    cursor: default
+    display: flex
+    font-size: 16px
+    justify-content: center
+
+    a, span
+      background-color: white
+      background: none
+      box-shadow: none
+      border: none
+      color: black
+      padding: 10px
+      text-decoration: none
+
+      &:hover, &:focus
+        text-decoration: underline
+
+      &.disabled
+        color: #aaa
+
+        &:hover, &:focus
+          text-decoration: none
+
+    .current, .next
+      align-items: center
+      background-color: darken(#f1f1f1, 20)
+      border-radius: 50%
+      display: flex
+      font-style: normal
+      font-weight: bold
+      height: 25px
+      justify-content: center
+      text-shadow: none
+      width: 25px
+
+    .pagination
+      align-items: center
+      margin: 0
+      padding: 0
+
 .btn
   border-radius: 0
   background-image: none

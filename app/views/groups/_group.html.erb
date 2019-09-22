@@ -1,9 +1,24 @@
 <div class='group mb-4'>
-    <div class='row contestants m-0'>
-        <% if group.present? %>
-            <% group.ordered_contestants.each do |contestant| %>
-                <%= render partial: 'contestants/contestant_nameplate_half', locals: { contestant: contestant, group: group } %>
-            <% end %>
+    <div class='row mb-4 mt-4'>
+        <% if group.center.present? %>
+            <div class='col-2'>
+                <%= render partial: 'contestants/nameplate_half', locals: { contestant: group.center, group: group } %>
+            </div>
         <% end %>
+        <div class='col-10 m-0 p-0'>
+            <% group.contestants.each do |contestant| %>
+                <div class='member'>
+                    <%= link_to contestant_path(contestant) do %><div class='headshot'><%= image_tag(contestant.headshot_url) %></div><% end %>
+                    <div class='native m-0'><%= contestant.name_native %></div>
+                    <div class='english m-0'><%= contestant.name_english %></div>
+                    <div class='actions'>
+                    <% unless contestant.is_center_for(group) %>
+                        <%= link_to 'Make Center', make_center_contestant_path(contestant, group_id: group.id) %> | 
+                    <% end %>
+                    <%= link_to 'Remove', remove_from_group_contestant_path(contestant, group_id: group.id) %>
+                </div>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>
