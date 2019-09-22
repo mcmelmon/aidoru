@@ -1,3 +1,6 @@
+<%= content_for(:title) { "Fantasy Idol Group: #{@group.name}" } %>
+<%= content_for(:page_description) { @group.description } %>
+
 <div class='container'>
   <h1><%= @group.name %></h1>
   <div class='group'><%= render partial: 'group', locals: { group: @group } %></div>

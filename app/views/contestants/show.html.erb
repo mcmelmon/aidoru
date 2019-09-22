@@ -1,3 +1,6 @@
+<%= content_for(:title) { "#{@contestant.name_native} (#{@contestant.name_english})" } %>
+<%= content_for(:page_description) { "Summary page for #{@contestant.contest.name_native}'s #{@contestant.name_native} (#{@contestant.name_english})}" } %>
+
 <div class='container'>
     <div class='contestant'>
         <div class='row'>
