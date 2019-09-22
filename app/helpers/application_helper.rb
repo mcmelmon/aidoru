@@ -1,10 +1,10 @@
 module ApplicationHelper
     def open_graph_description
-        @group.present? ? @group.description : page_description
+        page_description
     end
 
     def open_graph_title
-        @group.present? ? @group.name : page_title
+        page_title
     end
 
     def open_graph_url
@@ -13,7 +13,12 @@ module ApplicationHelper
 
     def open_graph_image
         if @group.present?
-            @group.center.headshot_url if @group.center.present?
+            @group.center.bodyshot_url if @group.center.present?
+        elsif @contestant.present?
+            @contestant.bodyshot_url
+        elsif controller.controller_name == 'home'
+            group = current_user&.current_group
+            group.center.bodyshot_url if (group.present? && group.center.present?)
         end
     end
 
