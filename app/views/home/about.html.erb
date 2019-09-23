@@ -20,14 +20,14 @@
 
 <%= form_for(@message) do |f| %>
     <div class="field">
-      <%= f.label 'Your email address' %><br />
+      <%= f.label 'メールアドレス (email address)' %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field mt-4">
-      <%= f.label 'Message' %><br />
+      <%= f.label 'メッセージ (message)' %><br />
       <%= f.text_area :message, rows: '11', placeholder: "" %>
     </div>
 
-    <%= f.submit 'Send Message', class: 'btn btn-primary btn-lg mb-4 mt-4' %>
+    <%= f.submit '送る (send)', class: 'btn btn-primary btn-lg mb-4 mt-4' %>
 <% end %>
