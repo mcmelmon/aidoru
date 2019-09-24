@@ -1,5 +1,4 @@
-<%= content_for(:title) { 'Home' } %>
-<%= content_for(:page_description) { 'Start picking members for your fantasy idol groups.' } %>
+<%= content_for(:title) { 'ホーム (Home)' } %>
 
 <div class='homepage'>
     <% if user_signed_in? %>
@@ -7,7 +6,7 @@
         <% if current_user.current_group.blank? %>
             <h2 class="display-4">ようこそ and Welcome!</h2>
             <p class='lead'>
-                <%= link_to 'Start New Group', new_group_path, class: 'btn btn-primary btn-lg' %>
+                <%= link_to '新しいグループを開始 (Start New Group)', new_group_path, class: 'btn btn-primary btn-lg' %>
             </p>
         <% else %>
             <div class='lead'>
@@ -20,6 +19,7 @@
         <div class='jumbotron'>
             <h2 class="display-4">ようこそ and Welcome!</h2>
             <hr class="my-4">
+            <p>サインインまたはサインアップして、ファンタジーアイドルグループのメンバーを選択してください。</p>
             <p>Please sign in or sign up to start picking members for your fantasy idol groups.</p>
             <p class="lead mb-4 mt-4">
                 <%= link_to 'サインアップ (Sign Up)', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
@@ -38,7 +38,7 @@
             </div>
         </div>
     <% end %>
-    <div class='separator'><h1 class='text-uppercase'><%= "#{Contest.first.name_native} Contestants" %></h1></div>
+    <div class='separator'><h1 class='text-uppercase'><%= "#{Contest.first.name_native} 出場者" %></h1></div>
     <div class='contestants'>
         <% @contestants.each do |contestant| %>
             <%= render partial: 'contestants/nameplate_full', locals: {contestant: contestant} %>
