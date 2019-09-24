@@ -19,6 +19,10 @@ class Group < ApplicationRecord
         super()
     end
 
+    def has_room
+        contestants.count < contest.group_size
+    end
+
     def is_active_for(user)
         id == user.current_group&.id
     end

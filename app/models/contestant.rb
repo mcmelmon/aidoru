@@ -12,8 +12,10 @@ class Contestant < ApplicationRecord
     accepts_nested_attributes_for :contest_rankings, allow_destroy: true
 
     def add_to_group(group)
-        group.group_members.create!(contestant: self)
-        group_adds.create!(group_id: group.id)
+        if group.has_room
+            group.group_members.create!(contestant: self)
+            group_adds.create!(group_id: group.id)
+        end
     end
 
     def is_center_for(group)

@@ -1,12 +1,12 @@
 <div class='contestant-nameplate-full'>
-    <div class='headshot'><%= image_tag contestant.headshot_url, alt: "#{contestant.name_native} #{contestant.name_english} head shot" %></div>
+    <%= link_to contestant_path(contestant) do %><div class='headshot'><%= image_tag contestant.headshot_url, alt: "#{contestant.name_native} #{contestant.name_english} head shot" %></div><% end %>
     <div class='name'>
         <h2 class='native'><%= contestant.name_native %></h1>
         <h2 class='english'><%= contestant.name_english %></h2>
     </div>
     <div class='bodyshot'><%= image_tag contestant.bodyshot_url, alt: "#{contestant.name_native} #{contestant.name_english} body shot" %></div>
     <div class='actions'>
-        <% if current_user.present? && current_user.current_group.present? %>
+        <% if current_user.present? && current_user.current_group.present? && current_user.current_group.has_room %>
             <%= link_to 'Add', add_to_group_contestant_path(contestant, group_id: current_user.current_group), class: 'btn btn-primary' %>
         <% end %>
     </div>

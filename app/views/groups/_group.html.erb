@@ -22,7 +22,7 @@
 
     <div class='row contestants'>
         <% group.ordered_contestants.each do |member| %>
-            <% unless member.is_center_for(group) %>
+            <% unless member == center %>
                 <div class='member'>
                     <%= link_to contestant_path(member) do %><div class='headshot'><%= image_tag(member.headshot_url) %></div><% end %>
                     <div class='native m-0'><%= member.name_native %></div>
