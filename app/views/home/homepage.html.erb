@@ -26,6 +26,17 @@
                 <%= link_to 'ログイン (Sign In)', user_session_path, class: 'btn btn-secondary btn-lg' %>
             </p>
         </div>
+        <div class='the-marquee'>
+            <div id="groupCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner ml-4 p-4">
+                    <% Group.all.to_a.shuffle.each_with_index do |group, index| %>
+                        <div class="<%= index == 1 ? 'carousel-item active' : 'carousel-item' %>">
+                            <%= render partial: 'groups/group', locals: { group: group } %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
     <% end %>
     <div class='separator'><h1 class='text-uppercase'><%= "#{Contest.first.name_native} Contestants" %></h1></div>
     <div class='contestants'>
