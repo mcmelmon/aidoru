@@ -8,7 +8,7 @@
 
     <p class='mt-2'>
         <% unless group.is_active_for(current_user) %>
-            <span><%= link_to('make active group', make_current_group_path(group)) %></span> | 
+            <span><%= link_to('活性化する (make active)', make_current_group_path(group)) %></span> | 
         <% end %>
         <span>
             <%= link_to edit_group_path(group) do %>
@@ -17,7 +17,7 @@
         </span> |
         <span>
             <%= link_to group, method: :delete, data: { confirm: '本当によろしいですか? (Are you sure?)' } do %>
-                disband <i class='fas fa-trash-alt'></i>
+                解散 (disband) <i class='fas fa-trash-alt'></i>
             <% end %>
         </span>
     </p>
