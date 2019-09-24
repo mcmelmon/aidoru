@@ -27,4 +27,8 @@ class Group < ApplicationRecord
         members = contestants.where.not(id: center_id).to_a
         center.present? ? members.unshift(center) : members
     end
+
+    def random_member
+        contestants.to_a.shuffle.first
+    end
 end
