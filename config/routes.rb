@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :contestants do
     member do
       get 'add_to_group', to: 'contestants#add_to_group'
+      get 'groups', to: 'contestants#groups'
       get 'remove_from_group', to: 'contestants#remove_from_group'
       get 'make_center', to: 'contestants#make_center'
     end

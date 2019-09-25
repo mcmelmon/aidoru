@@ -6,7 +6,7 @@
     </div>
     <div class='bodyshot'><%= image_tag contestant.bodyshot_url, alt: "#{contestant.name_native} #{contestant.name_english} body shot" %></div>
     <div class='actions'>
-        <% if current_user.present? && current_user.current_group.present? && current_user.current_group.has_room %>
+        <% if can_add_contestant_to_current_group(contestant) %>
             <%= link_to 'Add', add_to_group_contestant_path(contestant, group_id: current_user.current_group), class: 'btn btn-primary' %>
         <% end %>
     </div>

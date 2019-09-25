@@ -8,6 +8,9 @@ class Group < ApplicationRecord
     validates_presence_of :contest_id
     validates_presence_of :user_id
 
+    scope :includes_contestant, -> (contestant_id) { Group.joins(:group_members).merge(GroupMember.includes_member(contestant_id)) }
+
+
     self.per_page = 10
 
     def center
@@ -21,6 +24,10 @@ class Group < ApplicationRecord
 
     def has_room
         contestants.count < contest.group_size
+    end
+
+    def includes_member(contestant_id)
+        contestants.where(id: contestant_id).present?
     end
 
     def is_active_for(user)

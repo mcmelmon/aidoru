@@ -6,6 +6,10 @@ class ContestantsController < ApplicationController
         redirect_to root_path
     end
 
+    def groups
+        @groups = Group.includes_contestant(params[:id]).page(params[:page]).order('updated_at DESC')
+    end
+
     def make_center
         @contestant.make_center(@group)
         redirect_to edit_group_path(@group)
