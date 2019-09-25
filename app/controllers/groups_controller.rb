@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-    before_action :authenticate_user!, only: [:add_random_members, :destroy, :edit, :make_current_group, :update]
+    before_action :authenticate_user!, only: [:add_random_members, :destroy, :edit, :make_current_group, :new, :update]
     before_action :correct_user, only: [:add_random_members, :destroy, :edit, :make_current_group, :update]
 
     def add_random_members
@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
         @group = current_user.groups.build(group_params)
         if @group.save
             current_user.update_attribute(:current_group_id, @group.id)
+            Contestant.find_by(id: params[:contestant_id]).add_to_group(@group) if params[:contestant_id].present?
             flash[:notice] = 'Your group was created.'
             redirect_to group_path(@group)
         else
