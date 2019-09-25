@@ -8,6 +8,8 @@
     <div class='actions'>
         <% if can_add_contestant_to_current_group(contestant) %>
             <%= link_to 'Add', add_to_group_contestant_path(contestant, group_id: current_user.current_group), class: 'btn btn-primary' %>
+        <% else %>
+            <%= link_to '新しいグループを開始 (Add To New Group)', new_group_path(contestant: contestant), class: 'btn btn-primary btn-lg' %>
         <% end %>
     </div>
 </div>
