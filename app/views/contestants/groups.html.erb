@@ -1,0 +1,12 @@
+<div class='container'>
+    <h2>出場者のグループ (Groups Including Contestant)</h2>
+    <% @groups.each do |group| %>
+        <% if group.contestants.present? %>
+            <h2><%= link_to group.name, group_path(group) %></h2>
+            <%= render partial: 'groups/group', locals: { group: group } %>
+            <p><%= truncate(group.description, length: 140) %></p>
+            <hr>
+        <% end %>
+    <% end %>
+    <div class='apple_pagination mb-4 mt-4'><%= will_paginate @groups %></div>
+</div>

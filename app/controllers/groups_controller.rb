@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
         open_positions = @group.contest.group_size - @group.contestants.count
         members = Contestant.where.not(id: @group.contestants.map(&:id))
             .to_a
-            .shuffle
+            .shuffle!(random: Random.new(Time.now.to_i))
             .first(open_positions)
         members.each do |member|
             member.add_to_group(@group)

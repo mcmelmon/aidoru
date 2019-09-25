@@ -1,7 +1,9 @@
 <div class='summary mb-4'>
     <h4 class='mb-1'>
         <%= link_to group.name, group_path(group) %>
-        <%= ' (active group)' if group.is_active_for(current_user) %>
+        <% if user_signed_in? %>
+            <%= ' (active group)' if group.is_active_for(current_user) %>
+        <% end %>
     </h4>
     <%= render partial: 'groups/group', locals: { group: group } %>
     <p><%= group.description %></p>
