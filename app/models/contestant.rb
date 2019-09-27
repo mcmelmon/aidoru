@@ -18,6 +18,10 @@ class Contestant < ApplicationRecord
         end
     end
 
+    def current_rank
+        contest_rankings.where(period: contest_rankings.pluck(:period).max).first.rank
+    end
+
     def is_center_for(group)
         group.center_id == self.id
     end

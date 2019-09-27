@@ -4,6 +4,7 @@
         <h2 class='native'><%= contestant.name_native %></h1>
         <h2 class='english'><%= contestant.name_english %></h2>
     </div>
+    <div class='rank pb-2 pt-2'><%= contestant.current_rank %></div>
     <div class='bodyshot'><%= image_tag contestant.bodyshot_url, alt: "#{contestant.name_native} #{contestant.name_english} body shot" %></div>
     <div class='actions'>
         <% if can_add_contestant_to_current_group(contestant) %>
