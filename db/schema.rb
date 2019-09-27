@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_22_190820) do
+ActiveRecord::Schema.define(version: 2019_09_27_014120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 2019_09_22_190820) do
     t.datetime "updated_at", null: false
     t.index ["contestant_id"], name: "index_group_removes_on_contestant_id"
     t.index ["group_id"], name: "index_group_removes_on_group_id"
+  end
+
+  create_table "group_scores", force: :cascade do |t|
+    t.bigint "group_id"
+    t.integer "period"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_scores_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|

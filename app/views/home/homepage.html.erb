@@ -40,8 +40,10 @@
     <% end %>
     <div class='separator'><h1 class='text-uppercase'><%= "#{Contest.first.name_native} 出場者" %></h1></div>
     <div class='contestants'>
-        <% @contestants.each do |contestant| %>
-            <%= render partial: 'contestants/nameplate_full', locals: {contestant: contestant} %>
+        <% if @contestant_ids.present? %>
+            <% @contestant_ids.each do |id| %>
+                <%= render partial: 'contestants/nameplate_full', locals: {contestant: Contestant.find_by(id: id)} %>
+            <% end %>
         <% end %>
     </div>
 </div>

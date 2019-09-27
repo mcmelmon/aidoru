@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+    require 'will_paginate/array'
+
     before_action :authenticate_user!, only: [:add_random_members, :destroy, :edit, :make_current_group, :new, :update]
     before_action :correct_user, only: [:add_random_members, :destroy, :edit, :make_current_group, :update]
 
@@ -39,7 +41,9 @@ class GroupsController < ApplicationController
     end
 
     def index
-        @groups = Group.page(params[:page]).order('updated_at DESC')
+        # TODO: this is lol, but it's accurate; figure out the join/merge magic
+        ranked_group_ids = Group.all.map {|c| [c.id, c.current_score] }.sort{|a,b| b[1] <=> a[1]}.map{|c| c[0]}[0..100]
+        @groups = ranked_group_ids.map { |id| Group.find_by(id: id) }
     end
 
     def make_current_group

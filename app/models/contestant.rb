@@ -18,6 +18,14 @@ class Contestant < ApplicationRecord
         end
     end
 
+    def current_period
+        contest_rankings.pluck(:period).max
+    end
+
+    def current_rank
+        contest_rankings.where(period: current_period).first.rank
+    end
+
     def is_center_for(group)
         group.center_id == self.id
     end
@@ -30,5 +38,6 @@ class Contestant < ApplicationRecord
         group.update_attribute(:center_id, nil) if group.center == self
         group.group_members.find_by(contestant: self).destroy
         group_removes.create!(group_id: group.id)
+        group.score_group
     end
 end
