@@ -4,12 +4,7 @@
 <div class='container'>
     <div class='contestant'>
         <div class='row'>
-            <div class='col' style='max-width:200px'>
-                <div class='mb-4'><%= render partial: 'nameplate_full', locals: {contestant: @contestant} %></div>
-                <h4><%= link_to 'プロフィール (Profile)', @contestant.profile_url, target: '_blank'%></h4>
-                <h4><%= link_to '出場者のグループ (Groups)', groups_contestant_path %></h4>
-            </div>
-            <div class='col'>
+            <div class='col-sm'>
                 <% @contestant.performances.each do |performance| %>
                     <div class='performance mb-4'>
                         <h3 class='mb-1'><%= performance.name_native %></h2>
@@ -17,6 +12,13 @@
                         <div class='video'><%= youtube_video performance.youtube_video_id %></div>
                     </div>
                 <% end %>
+            </div>
+            <div class='col-sm'>
+                <h4><%= link_to 'プロフィール (Profile)', @contestant.profile_url, target: '_blank'%></h4>
+                <h4><%= link_to '出場者のグループ (Groups)', groups_contestant_path %></h4>
+            </div>
+            <div class='col-sm'>
+                <div class='mb-4'><%= render partial: 'nameplate_full', locals: {contestant: @contestant} %></div>
             </div>
         </div>
     </div>
