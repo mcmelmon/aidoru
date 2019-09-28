@@ -7,6 +7,7 @@ class ContestantsController < ApplicationController
     end
 
     def groups
+        @contestant = Contestant.find_by(id: params[:id])
         @groups = Group.includes_contestant(params[:id]).page(params[:page]).order('updated_at DESC')
     end
 
