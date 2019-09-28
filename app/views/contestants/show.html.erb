@@ -5,7 +5,7 @@
     <div class='contestant'>
         <div class='row'>
             <div class='col-sm'>
-                <% @contestant.performances.each do |performance| %>
+                <% @contestant.performances.order('updated_at DESC').each do |performance| %>
                     <div class='performance mb-4'>
                         <h3 class='mb-1'><%= performance.name_native %></h2>
                         <h3 class='mb-1'><%= performance.name_english %></h2>
