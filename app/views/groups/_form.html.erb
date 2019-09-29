@@ -1,11 +1,11 @@
 <%= form_for(@group || Group.new) do |f| %>
     <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label '名前 (name)' %><br />
       <%= f.text_field :name %>
     </div>
 
     <div class="field mt-4">
-      <%= f.label 'Description' %><br />
+      <%= f.label '説明 (description)' %><br />
       <%= f.text_area :description, rows: '11', placeholder: "Do you have a theme for this group?  Share the reasons behind your picks." %>
     </div>
   
@@ -17,8 +17,8 @@
       <%= render partial: 'groups/group', locals: { group: @group } %>
 
       <% if @group.contestants.count < @group.contest.group_size %>
-        <p class='mb-1 mt-4'><%= link_to 'Pick', root_path %> members to add to this group!</p>
-        <p><%= link_to 'Randomly', add_random_members_group_path(@group) %> select members for this group!</p>
+        <p class='mb-1 mt-4'><%= link_to 'だれがアイドルになるか当ててみてください (pick the winners)!', root_path %></p>
+        <p><%= link_to 'ランダム化 (randomize)', add_random_members_group_path(@group) %></p>
       <% end %>
     <% end %>
 
