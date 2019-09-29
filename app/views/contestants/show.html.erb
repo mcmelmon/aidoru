@@ -3,6 +3,11 @@
 
 <div class='container'>
     <div class='contestant'>
+        <% if current_user.blank? || user_signed_in? && current_user.current_group.blank? %>
+            <div class='pick-them row'>
+                <h3><%= link_to 'だれがアイドルになるか当ててみてください！ Can you pick the winning group?  Give it a try!', new_group_path(contestant: @contestant), class: 'btn btn-secondary' %></h3>
+            </div>
+        <% end %>
         <div class='row'>
             <div class='col-sm'>
                 <% @contestant.performances.order('updated_at DESC').each do |performance| %>
