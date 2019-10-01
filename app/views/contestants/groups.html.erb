@@ -1,7 +1,7 @@
 <div class='container'>
-    <h2>出場者のグループ (Groups Including Contestant)</h2>
+    <h2>出場者のグループ</h2>
     <div class='actions mb-4 mt-4'>
-        <%= link_to '新しいグループを開始 (Start New Group)', new_group_path(contestant: @contestant), class: 'btn btn-primary' %>
+        <%= link_to 'だれがアイドルになるか当ててみてください！', new_group_path(contestant: @contestant), class: 'btn btn-primary', style: 'width:250px' %>
         <hr>
     </div>
     <% @groups.each do |group| %>
