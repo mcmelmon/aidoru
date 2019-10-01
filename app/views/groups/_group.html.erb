@@ -14,8 +14,8 @@
                 <div class='english m-0'><%= center.name_english %></div>
 
                 <div class='actions'>
-                    <%= link_to 'Center', '#' %> | 
-                    <%= link_to 'Remove', remove_from_group_contestant_path(center, group_id: group.id) %>
+                    <%= link_to 'センター', '#' %> | 
+                    <%= link_to '削除する', remove_from_group_contestant_path(center, group_id: group.id) %>
                 </div>
             </div>
         </div>
@@ -31,9 +31,9 @@
 
                     <div class='actions'>
                         <% unless member.is_center_for(group) %>
-                            <%= link_to 'Make Center', make_center_contestant_path(member, group_id: group.id) %> | 
+                            <%= link_to 'センター', make_center_contestant_path(member, group_id: group.id) %> | 
                         <% end %>
-                        <%= link_to 'Remove', remove_from_group_contestant_path(member, group_id: group.id) %>
+                        <%= link_to '削除する', remove_from_group_contestant_path(member, group_id: group.id) %>
                     </div>
                 </div>
             <% end %>

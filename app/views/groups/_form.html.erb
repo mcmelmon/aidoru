@@ -1,12 +1,12 @@
 <%= form_for(@group || Group.new) do |f| %>
     <div class="field">
-      <%= f.label '名前 (name)' %><br />
+      <%= f.label '名前' %><br />
       <%= f.text_field :name %>
     </div>
 
     <div class="field mt-4">
-      <%= f.label '説明 (description)' %><br />
-      <%= f.text_area :description, rows: '11', placeholder: "Do you have a theme for this group?  Share the reasons behind your picks." %>
+      <%= f.label '説明' %><br />
+      <%= f.text_area :description, rows: '11' %>
     </div>
   
     <%= hidden_field_tag(:user_id, @group.user_id) %>
@@ -17,8 +17,8 @@
       <%= render partial: 'groups/group', locals: { group: @group } %>
 
       <% if @group.contestants.count < @group.contest.group_size %>
-        <p class='mb-1 mt-4'><%= link_to 'だれがアイドルになるか当ててみてください (pick the winners)!', root_path %></p>
-        <p><%= link_to 'ランダム化 (randomize)', add_random_members_group_path(@group) %></p>
+        <p class='mb-1 mt-4'><%= link_to 'だれがアイドルになるか当ててみてください!', root_path %></p>
+        <p><%= link_to 'ランダム化', add_random_members_group_path(@group) %></p>
       <% end %>
     <% end %>
 

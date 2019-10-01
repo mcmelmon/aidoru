@@ -1,7 +1,7 @@
 <%= content_for(:title) { 'このサイトについて (About)' } %>
-<%= content_for(:page_description) { 'Oijofie allows users to pick contestants for their own fantasy idol groups.  When the real idols are ranked, the fantasy groups will be scored and ranked as well. ' } %>
+<%= content_for(:page_description) { 'アイドルショーのファンタジースポーツサイトのように、Oijofieはユーザーが自分のファンタジーグループに競技者を追加できるようにします。競技者が実生活でランキングを受け取ると、ファンタジーグループは含まれる各メンバーに基づいてスコアが付けられます。グループスコアはラウンドごとに累積します。 そのため、グループの適切なメンバーをより早く選択する（そして、選択しない）ことは、後で選択するよりも高いスコアになります。 ' } %>
 
-<h3>このサイトについて (About)</h3>
+<h3>このサイトについて</h3>
 
 <div class='mb-4'>
     <div class='mb-4'>
@@ -12,32 +12,20 @@
           もちろん、人々は自分の想像のテーマに合わせてグループメンバーを自由に選ぶことができます。 ファンタジーグループを作成するときに、選択の理由を共有してください！
       </p>
     </div>
-    <div class='mb-4'>
-      <p class='mb-3'>
-          Like a fantasy sports site for idol shows, Oijofie allows users to add contestants to their own fantasy groups. 
-          When the contestants receive rankings in real life, the fantasy groups get scored based on each included member. 
-          The group score accumulates for every round.  
-          So picking the right members for a group sooner (and leaving them alone) will score higher than picking them later.
-      </p>
-      <p>
-          Of course, people are free to pick group members to match themes of their own imagining.  
-          Share the reasons for your choices when you create your fantasy groups!
-      </p>
-    </div>
 </div>
 
-<h3 class='mb-2 mt-4'>お問い合わせ (Contact Us)</h3>
+<h3 class='mb-2 mt-4'>お問い合わせ</h3>
 
 <%= form_for(@message) do |f| %>
     <div class="field">
-      <%= f.label 'メールアドレス (email address)' %><br />
+      <%= f.label 'メールアドレス' %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field mt-4">
-      <%= f.label 'メッセージを送る (send message)' %><br />
+      <%= f.label 'メッセージを送る' %><br />
       <%= f.text_area :message, rows: '11', placeholder: "" %>
     </div>
 
-    <%= f.submit '送る (send)', class: 'btn btn-primary btn-lg mb-4 mt-4' %>
+    <%= f.submit '送る', class: 'btn btn-primary btn-lg mb-4 mt-4' %>
 <% end %>
