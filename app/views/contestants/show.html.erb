@@ -3,11 +3,6 @@
 
 <div class='container'>
     <div class='contestant'>
-        <% if current_user.blank? || user_signed_in? && current_user.current_group.blank? %>
-            <div class='pick-them row'>
-                <h3><%= link_to 'だれがアイドルになるか当ててみてください！', new_group_path(contestant: @contestant), class: 'btn btn-secondary' %></h3>
-            </div>
-        <% end %>
         <div class='row'>
             <div class='col-sm'>
                 <% @contestant.performances.order('updated_at DESC').each do |performance| %>
@@ -19,6 +14,11 @@
                 <% end %>
             </div>
             <div class='col-sm'>
+                <% if current_user.blank? || user_signed_in? && current_user.current_group.blank? %>
+                    <div class='pick-them mb-4'>
+                        <%= link_to 'だれがアイドルになるか当ててみてください！', new_group_path(contestant: @contestant), class: 'btn btn-secondary' %>
+                    </div>
+                <% end %>
                 <h4><%= link_to 'プロフィール', @contestant.profile_url, target: '_blank'%></h4>
                 <h4><%= link_to '出場者のグループ', groups_contestant_path %></h4>
             </div>
