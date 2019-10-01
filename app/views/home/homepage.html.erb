@@ -6,7 +6,7 @@
         <div class='jumbotron'>
         <% if current_user.current_group.blank? %>
             <h2 class="display-4">ようこそ!</h2>
-            <p class='lead'><%= link_to 'だれがアイドルになるか当ててみてください！ Can you pick the winning group?  Give it a try!', new_group_path, class: 'btn btn-primary' %></p>
+            <p class='lead'><%= link_to 'だれがアイドルになるか当ててみてください!', new_group_path, class: 'btn btn-primary' %></p>
         <% else %>
             <div class='lead'>
                 <div><h2 class='the-group'><%= link_to current_user.current_group.name, group_path(current_user.current_group) %></h2></div>
@@ -17,10 +17,10 @@
     <% else %>
         <div class='jumbotron'>
             <h2 class="display-4">ようこそ!</h2>
-            <p>だれがアイドルになるか当ててみてください！ Can you pick the winning group?  Give it a try!</p>
+            <p>だれがアイドルになるか当ててみてください！</p>
             <p class="lead mb-4 mt-4">
-                <%= link_to 'サインアップ (Sign Up)', new_user_registration_path, class: 'btn btn-primary' %>
-                <%= link_to 'ログイン (Sign In)', user_session_path, class: 'btn btn-secondary' %>
+                <%= link_to 'サインアップ', new_user_registration_path, class: 'btn btn-primary' %>
+                <%= link_to 'ログイン', user_session_path, class: 'btn btn-secondary' %>
             </p>
         </div>
     <% end %>

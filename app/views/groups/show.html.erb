@@ -6,7 +6,7 @@
   <div class='group'><%= render partial: 'group', locals: { group: @group } %></div>
   <div><p><%= simple_format(@group.description) %></p></div>
   <% if @group.persisted? && @group.contestants.count < @group.contest.group_size %>
-    <p class='mb-1 mt-4'><%= link_to 'だれがアイドルになるか当ててみてください (pick the winners)!', root_path %></p>
-    <p><%= link_to 'ランダム化 (randomize)', add_random_members_group_path(@group) %></p>
+    <p class='mb-1 mt-4'><%= link_to 'だれがアイドルになるか当ててみてください!', root_path %></p>
+    <p><%= link_to 'ランダム化', add_random_members_group_path(@group) %></p>
   <% end %>
 </div>

@@ -2,7 +2,7 @@
     <h4 class='mb-1'>
         <%= link_to group.name, group_path(group) %>
         <% if user_signed_in? %>
-            <%= ' (active group)' if group.is_active_for(current_user) %>
+            <%= ' (アクティブ)' if group.is_active_for(current_user) %>
         <% end %>
     </h4>
     <%= render partial: 'groups/group', locals: { group: group } %>
@@ -10,16 +10,16 @@
 
     <p class='mt-2'>
         <% unless group.is_active_for(current_user) %>
-            <span><%= link_to('活性化する (make active)', make_current_group_path(group)) %></span> | 
+            <span><%= link_to('活性化する', make_current_group_path(group)) %></span> | 
         <% end %>
         <span>
             <%= link_to edit_group_path(group) do %>
-                編集 (edit) <i class='fas fa-edit'></i>
+                編集 <i class='fas fa-edit'></i>
             <% end %>
         </span> |
         <span>
             <%= link_to group, method: :delete, data: { confirm: '本当によろしいですか? (Are you sure?)' } do %>
-                解散 (disband) <i class='fas fa-trash-alt'></i>
+                解散 <i class='fas fa-trash-alt'></i>
             <% end %>
         </span>
     </p>
