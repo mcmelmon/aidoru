@@ -34,6 +34,10 @@ class Contestant < ApplicationRecord
         group.update_attribute(:center_id, self.id)
     end
 
+    def rank_for_period(period)
+        contest_rankings.where(period: period).first&.rank
+    end
+
     def remove_from_group(group)
         group.update_attribute(:center_id, nil) if group.center == self
         group.group_members.find_by(contestant: self).destroy

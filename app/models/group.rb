@@ -57,6 +57,7 @@ class Group < ApplicationRecord
     end
 
     def score_group
+        #TODO: accumulate score from period to period
         score = 0
         contestants.each do |contestant|
             score += (101 - contestant.current_rank)

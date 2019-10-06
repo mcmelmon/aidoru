@@ -25,11 +25,20 @@
         </div>
     <% end %>
     <div class='separator'><h1 class='text-uppercase'><%= "#{Contest.first.name_native} だれが最終メンバーに残ると思いますか？" %></h1></div>
-    <div class='contestants'>
-        <% if @contestant_ids.present? %>
-            <% @contestant_ids.each do |id| %>
-                <%= render partial: 'contestants/nameplate_full', locals: {contestant: Contestant.find_by(id: id)} %>
+    <div class='periods'>
+        <% selected_period = params[:selected_period].present? ? params[:selected_period] : Contest.first.current_period %>
+        <div class='tabs'>
+            <% Contest.first.periods.each do |period| %>
+                <h4 class="tab <%= selected_period.to_i == period ? 'active' : 'inactive' %>"><%= link_to "#{period} 週", root_path(selected_period: period) %></h4>
             <% end %>
-        <% end %>
+        </div>
+        <div class='contestants'>
+            <% if @contestant_ids.present? %>
+                <% @contestant_ids.each do |id| %>
+                    <% contestant = Contestant.find_by(id: id) %>
+                    <%= render partial: 'contestants/nameplate_full', locals: {contestant: contestant, period: selected_period} if contestant.rank_for_period(selected_period).present? %>
+                <% end %>
+            <% end %>
+        </div>
     </div>
 </div>
