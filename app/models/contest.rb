@@ -7,7 +7,7 @@ class Contest < ApplicationRecord
     end
 
     def periods
-        contest_rankings.pluck(:period).uniq
+        contest_rankings.pluck(:period).uniq.sort
     end
 
     def rankings_for_period(period)
