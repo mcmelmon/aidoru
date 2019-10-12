@@ -20,7 +20,6 @@
                     </div>
                 <% end %>
                 <h4><%= link_to 'プロフィール', @contestant.profile_url, target: '_blank'%></h4>
-                <h4><%= link_to '出場者のグループ', groups_contestant_path %></h4>
             </div>
             <div class='col-sm'>
                 <div class='mb-4'><%= render partial: 'nameplate_full', locals: {contestant: @contestant, period: Contest.first.current_period} %></div>
