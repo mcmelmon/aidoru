@@ -4,7 +4,11 @@
 <div class='container'>
     <div class='contestant'>
         <div class='row'>
-            <div class='col-sm'>
+            <div class='col-sm-3'>
+                <div class='mb-4'><%= render partial: 'nameplate_full', locals: {contestant: @contestant, period: Contest.first.current_period} %></div>
+                <h4><%= link_to 'プロフィール', @contestant.profile_url, target: '_blank'%></h4>
+            </div>
+            <div class='col'>
                 <% @contestant.performances.order('updated_at DESC').each do |performance| %>
                     <div class='performance mb-4'>
                         <h3 class='mb-1'><%= performance.name_native %></h2>
@@ -12,17 +16,6 @@
                         <div class='video'><%= youtube_video performance.youtube_video_id %></div>
                     </div>
                 <% end %>
-            </div>
-            <div class='col-sm'>
-                <% if current_user.blank? || user_signed_in? && current_user.current_group.blank? %>
-                    <div class='pick-them mb-4'>
-                        <%= link_to 'だれがアイドルになるか当ててみてください！', new_group_path(contestant: @contestant), class: 'btn btn-secondary' %>
-                    </div>
-                <% end %>
-                <h4><%= link_to 'プロフィール', @contestant.profile_url, target: '_blank'%></h4>
-            </div>
-            <div class='col-sm'>
-                <div class='mb-4'><%= render partial: 'nameplate_full', locals: {contestant: @contestant, period: Contest.first.current_period} %></div>
             </div>
         </div>
     </div>
