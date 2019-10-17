@@ -1,17 +1,21 @@
-<%= link_to contestant_path(contestant) do %>
     <div class='contestant-nameplate-full mb-5'>
         <div class='like pb-2 pt-2'><%= link_to '好', like_contestant_path(contestant), remote: true, onclick: 'alert("ありがとうございました!")' %></div>
-        <div class='headshot'><%= image_tag contestant.headshot_url, alt: "#{contestant.name_native} #{contestant.name_english} head shot" %></div>
-        <div class='name'>
-            <h2 class='native'><%= contestant.name_native %></h1>
-            <h2 class='english'><%= contestant.name_english %></h2>
-        </div>
+        <%= link_to contestant_path(contestant) do %>
+            <div class='headshot'><%= image_tag contestant.headshot_url, alt: "#{contestant.name_native} #{contestant.name_english} head shot" %></div>
+        <% end %>
+        <%= link_to contestant_path(contestant) do %>
+            <div class='name'>
+                <h2 class='native'><%= contestant.name_native %></h1>
+                <h2 class='english'><%= contestant.name_english %></h2>
+            </div>
+        <% end %>
         <div class='rank pb-2 pt-2'><%= contestant.rank_for_period(period).present? ? contestant.rank_for_period(period) : ' - ' %></div>
-        <div class='bodyshot'><%= image_tag contestant.bodyshot_url, alt: "#{contestant.name_native} #{contestant.name_english} body shot" %></div>
+        <%= link_to contestant_path(contestant) do %>
+            <div class='bodyshot'><%= image_tag contestant.bodyshot_url, alt: "#{contestant.name_native} #{contestant.name_english} body shot" %></div>
+        <% end %>
         <div class='actions'>
             <% if can_add_contestant_to_current_group(contestant) %>
                 <%= link_to '+', add_to_group_contestant_path(contestant, group_id: current_user.current_group), class: 'btn btn-primary', style: 'font-size:36px; padding: 0 0 5px 0' %>
             <% end %>
         </div>
     </div>
-<% end %>
