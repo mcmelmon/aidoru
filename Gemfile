@@ -39,11 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'activeadmin'
 gem 'bootstrap', '~> 4.3.1'
 gem 'cancancan'
-gem "devise", ">= 4.7.1"
+gem 'devise', '>= 4.7.1'
 gem 'draper'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'pundit'
+gem 'rubyzip', '~> 1.3.0'
 gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
