@@ -41,6 +41,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'cancancan'
 gem "devise", ">= 4.7.1"
 gem 'draper'
+gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'pundit'
 gem 'will_paginate', '~> 3.1.0'
