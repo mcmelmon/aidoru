@@ -1,5 +1,5 @@
 ActiveAdmin.register Contestant do
-    permit_params :bodyshot_url, :contest_id, :headshot_url, :name_native, :name_english, :profile_url,
+    permit_params :bodyshot_url, :contest_id, :headshot_url, :likes, :name_native, :name_english, :profile_url,
                   performances_attributes: [ :id, :name_english, :name_native, :youtube_video_id, :_destroy ],
                   contest_rankings_attributes: [ :id, :period, :rank, :_destroy ]
 
@@ -12,9 +12,7 @@ ActiveAdmin.register Contestant do
       end
       column :name_native
       column :name_english
-      column :headshot_url
-      column :bodyshot_url
-      column :profile_url
+      column :likes
       column "Adds" do |contestant|
         contestant.group_adds&.count
       end
@@ -39,6 +37,7 @@ ActiveAdmin.register Contestant do
         end
         row :name_native
         row :name_english
+        row :likes
         row :headshot_url
         row :bodyshot_url
         row :profile_url
@@ -59,6 +58,7 @@ ActiveAdmin.register Contestant do
       f.inputs do
         f.input :contest_id, as: :select, collection: Contest.all.map{|c| [c.name_english, c.id]}
         f.input :profile_url
+        f.input :likes
         f.input :name_native
         f.input :name_english
         f.input :headshot_url

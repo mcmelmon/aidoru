@@ -11,6 +11,12 @@ class ContestantsController < ApplicationController
         @groups = Group.includes_contestant(params[:id]).page(params[:page]).order('updated_at DESC')
     end
 
+    def like
+        @contestant = Contestant.find_by(id: params[:id])
+        likes = @contestant.likes.present? ? @contestant.likes + 1 : 1
+        @contestant.update_attribute(:likes, likes)
+    end
+
     def make_center
         @contestant.make_center(@group)
         redirect_to edit_group_path(@group)
