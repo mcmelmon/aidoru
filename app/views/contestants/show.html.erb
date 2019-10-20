@@ -9,7 +9,7 @@
                 <h4><%= link_to 'プロフィール', @contestant.profile_url, target: '_blank'%></h4>
             </div>
             <div class='col'>
-                <% @contestant.performances.order('updated_at DESC').each do |performance| %>
+                <% @contestant.performances.order('created_at DESC').each do |performance| %>
                     <div class='performance mb-4'>
                         <h3 class='mb-1'><%= performance.name_native %></h2>
                         <h3 class='mb-1'><%= performance.name_english %></h2>
