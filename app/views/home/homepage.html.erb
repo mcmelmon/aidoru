@@ -16,12 +16,9 @@
         </div>
     <% else %>
         <div class='jumbotron'>
-            <h2 class="display-4">ようこそ!</h2>
-            <p>だれがアイドルになるか当ててみてください！</p>
-            <p class="lead mb-4 mt-4">
-                <%= link_to 'サインアップ', new_user_registration_path, class: 'btn btn-primary' %>
-                <%= link_to 'ログイン', user_session_path, class: 'btn btn-secondary' %>
-            </p>
+            <h2 class="text-center">Oijofie Top 11</h2>
+            <p class='text-center mb-4 mt-2'>予想にいいねしてください！</p>
+            <%= render partial: 'home/top_contestants' %>
         </div>
     <% end %>
     <div class='separator'><h1 class='text-uppercase'><%= "#{Contest.first.name_native} だれが最終メンバーに残ると思いますか？" %></h1></div>

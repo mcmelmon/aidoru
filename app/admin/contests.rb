@@ -20,6 +20,18 @@ ActiveAdmin.register Contest do
   filter :url
   filter :created_at
 
+  show do
+    attributes_table do
+      row :name_native
+      row :name_english
+      table_for contest.most_liked_contestants.map(&:contestant_id) do
+        column "Most Liked Contestants" do |contestant_id|
+          Contestant.find_by(id: contestant_id).name_english
+        end
+      end
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :name_native

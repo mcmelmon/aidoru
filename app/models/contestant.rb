@@ -3,13 +3,16 @@ class Contestant < ApplicationRecord
     has_many :contest_rankings, inverse_of: :contestant, dependent: :destroy
     has_many :group_adds, inverse_of: :contestant, dependent: :destroy
     has_many :group_members, inverse_of: :contestant, dependent: :destroy
+    has_many :groups, through: :group_members
     has_many :group_removes, inverse_of: :contestant, dependent: :destroy
     has_many :performances, inverse_of: :contestant, dependent: :destroy
 
-    has_many :groups, through: :group_members
+    has_one :most_liked_contestant, inverse_of: :contestant
 
     accepts_nested_attributes_for :performances, allow_destroy: true
     accepts_nested_attributes_for :contest_rankings, allow_destroy: true
+
+    scope :liked, -> (contest_id) { where('contest_id = ? AND likes IS NOT ? AND likes > ?', contest_id, nil, 0).order('likes DESC') }
 
     def add_to_group(group)
         if group.has_room
