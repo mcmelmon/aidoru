@@ -1,0 +1,10 @@
+<div class='row oijofie-top'>
+    <% Contest.first.most_liked_contestants.each do |mlc| %>
+        <% member = Contestant.find_by(id: mlc.contestant_id) %>
+        <div class='member'>
+            <%= link_to contestant_path(member) do %><div class='headshot'><%= image_tag(member.headshot_url) %></div><% end %>
+            <div class='native m-0'><%= member.name_native %></div>
+            <div class='english m-0'><%= member.name_english %></div>
+        </div>
+    <% end %>
+</div>
