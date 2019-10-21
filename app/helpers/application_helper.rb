@@ -17,8 +17,7 @@ module ApplicationHelper
         elsif @contestant.present?
             @contestant.headshot_url
         elsif controller.controller_name == 'home'
-            group = current_user&.current_group
-            group.center.headshot_url if (group.present? && group.center.present?)
+            image_tag('oijofie.png')
         end
     end
 
