@@ -17,7 +17,7 @@ module ApplicationHelper
         elsif @contestant.present?
             @contestant.headshot_url
         elsif controller.controller_name == 'home'
-            image_tag('oijofie.png')
+            url_to_image('oijofie.png')
         end
     end
 
