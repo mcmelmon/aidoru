@@ -7,20 +7,6 @@
   <div class='collapse navbar-collapse' id='navbarsRinchan'>
     <ul class='navbar-nav mr-auto'>
       <li class='nav-item'><%= link_to 'お問い合わせ', about_path, class: 'nav-link' %></li>
-      <% if user_signed_in? %>
-        <li class='nav-item'><%= link_to '自分のグループ', user_groups_path(current_user), class: 'nav-link' %></li>
-      <% end %>
-      <% if user_signed_in? %>
-        <li class='nav-item dropdown'>
-          <%= link_to current_user.email&.truncate(14), '#', class: 'nav-link dropdown-toggle', id: 'dropdown01', 'data-toggle': 'dropdown' %>
-          <div class='dropdown-menu' aria-labelledby='dropdown01'>
-            <%= link_to 'アカウント', edit_user_registration_path, class: 'dropdown-item' %>
-            <%= link_to 'ログアウトしました。', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-          </div>
-        </li>
-      <% else %>
-        <li class='nav-item'><%= link_to 'ログイン', user_session_path, class: 'nav-link' %></li>
-      <% end %>
     </ul>
   </div>
 </nav>
