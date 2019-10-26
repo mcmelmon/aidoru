@@ -1,7 +1,7 @@
     <div class='contestant-nameplate-full mb-5'>
         <%= link_to like_contestant_path(contestant), remote: true, onclick: 'alert("ありがとうございました!")' do %>
             <div class='like pb-2 pt-2'>
-                <i class="far fa-thumbs-up"></i>
+                <i class="far fa-thumbs-up"> 推し</i>
             </div>
         <% end %>
         <%= link_to contestant_path(contestant) do %>
