@@ -5,7 +5,7 @@
     <div class='contestant'>
         <div class='row'>
             <div class='col-sm-3'>
-                <div class='call-to-vote text-center mb-3 mt-3'>予想にいいねしてください！</div>
+                <div class='call-to-vote text-center mb-3 mt-3'>あなたの推しMENに投票してください!</div>
                 <div class='mb-4'><%= render partial: 'nameplate_full', locals: {contestant: @contestant, period: Contest.first.current_period} %></div>
                 <h4><%= link_to 'プロフィール', @contestant.profile_url, target: '_blank'%></h4>
             </div>
